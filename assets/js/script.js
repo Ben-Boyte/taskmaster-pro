@@ -83,7 +83,7 @@ var taskP = $("<p>")
 $(this).replaceWith(taskP);
 });
 
-// modal was triggered
+// modal was triggere
 $("#task-form-modal").on("show.bs.modal", function() {
   // clear values
   $("#modalTaskDescription, #modalDueDate").val("");
