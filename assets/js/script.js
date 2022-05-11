@@ -128,21 +128,23 @@ $("#remove-tasks").on("click", function() {
 
 $(".list-group").on("click", "span", function() {
   
-  var date = $(this)
-    .text()
-    .trim();
-  
-  var dateInput = $("<input>")
-    .attr("type", "text")
-    .addClass("form-control")
-    .val(date);
+  var date = $(this).text().trim();
+   
+  var dateInput = $("<input>").attr("type", "text").addClass("form-control").val(date);
 
   $(this).replaceWith(dateInput);
+
+  dateInput.datepicker({
+    minDate: 1,
+    onClose: function() {
+      $(this).trigger("change");
+    }
+  });
 
   dateInput.trigger("focus");
 });
 
-$(".list-group").on("blur", "input[type='text']", function() {
+$(".list-group").on("change", "input[type='text']", function() {
   var date = $(this)
   .val()
   .trim();
@@ -226,6 +228,10 @@ $("#trash").droppable ({
   out: function(event, ui) {
     console.log("out");
   }
+});
+
+$("#modalDueDate").datepicker({
+  minDate: 1
 });
 
 loadTasks();
