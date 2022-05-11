@@ -167,6 +167,10 @@ $(".list-group").on("blur", "input[type='text']", function() {
 
 });
 
+$(".card .list-group").sortable({
+  connectWith: $(".card .list-group")
+});
+
 // load tasks for the first time
 loadTasks();
 
